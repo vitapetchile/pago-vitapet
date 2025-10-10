@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Datos de Transferencia — VitaPet Chile</title>
+<style>
+body {
+font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+background: #f8fafc;
+color: #1e293b;
+padding: 30px;
+}
+.container {
+max-width: 480px;
+margin: auto;
+background: white;
+border-radius: 10px;
+box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+padding: 20px;
+}
+h1 {
+font-size: 20px;
+text-align: center;
+margin-bottom: 16px;
+color: #0f172a;
+}
+.field {
+margin-bottom: 14px;
+}
+label {
+font-weight: 600;
+display: block;
+margin-bottom: 4px;
+}
+.value {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: #f1f5f9;
+padding: 8px 10px;
+border-radius: 6px;
+}
+.value span {
+word-break: break-all;
+}
+button {
+background: #0f62fe;
+border: none;
+color: white;
+padding: 6px 10px;
+border-radius: 6px;
+cursor: pointer;
+font-size: 13px;
+}
+button:hover {
+background: #2563eb;
+}
+#copyAll {
+display: block;
+width: 100%;
+margin-top: 12px;
+font-weight: 600;
+}
+.notice {
+font-size: 12px;
+color: #64748b;
+margin-top: 10px;
+text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Datos de Transferencia<br>VitaPet Chile 🐾</h1>
+
+<div class="field">
+<label>Nombre</label>
+<div class="value"><span id="nombre">VitaPet Chile</span><button onclick="copiar('nombre')">Copiar</button></div>
+</div>
+
+<div class="field">
+<label>RUT</label>
+<div class="value"><span id="rut">21.214.330-8</span><button onclick="copiar('rut')">Copiar</button></div>
+</div>
+
+<div class="field">
+<label>Correo</label>
+<div class="value"><span id="correo">vitapetchile@gmail.com</span><button onclick="copiar('correo')">Copiar</button></div>
+</div>
+
+<div class="field">
+<label>Banco</label>
+<div class="value"><span id="banco">Banco prepago Tenpo</span><button onclick="copiar('banco')">Copiar</button></div>
+</div>
+
+<div class="field">
+<label>Tipo de cuenta</label>
+<div class="value"><span id="tipo">Cuenta Vista</span><button onclick="copiar('tipo')">Copiar</button></div>
+</div>
+
+<div class="field">
+<label>Número de cuenta</label>
+<div class="value"><span id="numero">111121214330</span><button onclick="copiar('numero')">Copiar</button></div>
+</div>
+
+<button id="copyAll" onclick="copiarTodo()">Copiar todos los datos</button>
+<p class="notice">Haz clic en “Copiar” para usar los datos fácilmente al transferir 💳</p>
+</div>
+
+<script>
+function copiar(id) {
+const texto = document.getElementById(id).textContent;
+navigator.clipboard.writeText(texto).then(() => {
+const btn = event.target;
+const original = btn.textContent;
+btn.textContent = "Copiado ✅";
+setTimeout(() => btn.textContent = original, 1200);
+});
+}
+
+function copiarTodo() {
+const datos = [
+"Nombre: VitaPet Chile",
+"RUT: 21.214.330-8",
+"Correo: vitapetchile@gmail.com",
+"Banco: Banco prepago Tenpo",
+"Tipo de cuenta: Cuenta Vista",
+"Número de cuenta: 111121214330"
+].join("\n");
+
+navigator.clipboard.writeText(datos).then(() => {
+const btn = document.getElementById("copyAll");
+const original = btn.textContent;
+btn.textContent = "¡Todo copiado! ✅";
+setTimeout(() => btn.textContent = original, 1500);
+});
+}
+</script>
+
+</body>
+</html>
